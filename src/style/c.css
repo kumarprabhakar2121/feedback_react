@@ -35,9 +35,9 @@ option {
 
 body {
   margin: 0;
-  color: #6a6f8c;
+  /* color: #6a6f8c;
   background: rgb(102,27,59);
-  background: radial-gradient(circle, rgba(102,27,59,1) 24%, rgba(19,22,107,1) 100%);
+  background: radial-gradient(circle, rgba(102,27,59,1) 24%, rgba(19,22,107,1) 100%); */
   font: 600 16px/18px "Open Sans", sans-serif;
 }
 

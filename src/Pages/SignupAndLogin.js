@@ -15,6 +15,9 @@ const SignupAndLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [department, setDepartment] = useState("");
+  const [loginpassword, setLoginPassword] = useState("");
+  const [loginemail, setLoginemail] = useState("");
+  // const [department, setDepartment] = useState("");
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -31,8 +34,12 @@ const SignupAndLogin = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  const successNotify = () => toast("success!");
-  const errorNotify = () => toast("error!");
+  const handleLoginPasswordChange = (e) => {
+    setLoginPassword(e.target.value);
+  };
+  const handleLoginemailChange = (e) => {
+    setLoginemail(e.target.value);
+  };
   const handleSubmit = (e) => {
     axios({
       method: "post",
@@ -51,7 +58,31 @@ const SignupAndLogin = () => {
       })
       .catch(function (error) {
         console.log(error);
-        errorNotify();
+        toast("error!");
+      });
+
+    e.preventDefault();
+  };
+  const handleLoginSubmit = (e) => {
+    axios({
+      method: "post",
+      url: "http://localhost:2121/user/login",
+      data: {
+        email: loginemail,
+        password: loginpassword,
+      },
+    })
+      .then(function (response) {
+        console.log(response);
+        if (response.data.success) {
+          toast.success("Login Successful");
+        } else {
+          toast.error(response.data.message);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+        toast.error(error.response.data.message);
       });
 
     e.preventDefault();
@@ -66,46 +97,60 @@ const SignupAndLogin = () => {
             <label for="tab-1" className="tab">
               Log In
             </label>
-            <input
-              id="tab-2"
-              type="radio"
-              name="tab"
-              className="sign-up"
-              checked
-            />
+            <input id="tab-2" type="radio" name="tab" className="sign-up" />
             <label for="tab-2" className="tab">
               Sign Up
             </label>
             <div className="login-form">
               <div className="sign-in-htm">
-                <div className="group">
-                  <label for="email" className="label">
-                    Email Address
-                  </label>
-                  <input id="email" type="text" className="input" />
-                </div>
-                <div className="group">
-                  <label for="pass" className="label">
-                    Password
-                  </label>
-                  <input
-                    id="pass"
-                    type="password"
-                    className="input"
-                    data-type="password"
-                    value={password}
-                  />
-                </div>
-                {/* <div className="group">
+                <form
+                  onSubmit={(e) => {
+                    handleLoginSubmit(e);
+                  }}
+                  method="post"
+                >
+                  <div className="group">
+                    <label for="loginemail" className="label">
+                      Email Address
+                    </label>
+                    <input
+                      id="loginemail"
+                      type="text"
+                      className="input"
+                      value={loginemail}
+                      required
+                      onChange={(e) => {
+                        handleLoginemailChange(e);
+                      }}
+                    />
+                  </div>
+                  <div className="group">
+                    <label for="loginPass" className="label">
+                      Password
+                    </label>
+                    <input
+                      id="loginPass"
+                      type="password"
+                      className="input"
+                      data-type="password"
+                      value={loginpassword}
+                      required
+                      onChange={(e) => {
+                        handleLoginPasswordChange(e);
+                      }}
+                    />
+                  </div>
+                  {/* <div className="group">
                   <input id="check" type="checkbox" className="check" checked />
                   <label for="check">
                     <span className="icon"></span> Keep me Signed in
                   </label>
                 </div> */}
-                <div className="group">
-                  <input type="submit" className="button" value="Sign In" />
-                </div>
-                <div className="hr"></div>
+                  <div className="group">
+                    <input type="submit" className="button" value="Sign In" />
+                  </div>
+                  <div className="hr"></div>
+                </form>
               </div>
               <div className="sign-up-htm">
                 <form
