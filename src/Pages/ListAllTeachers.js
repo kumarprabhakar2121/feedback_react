@@ -11,19 +11,18 @@ import { BrowserRouter, Route, Routes, Link, Redirect } from "react-router-dom";
 
 // toast.configure();
 
-const ListAllUsers = () => {
+const ListAllTeachers = () => {
   const [posts, setPosts] = useState([]);
-  const [message, setMessage] = useState(false);
 
   useEffect(() => {
     axios
-      .get("http://localhost:2121/user/list")
+      .get("http://localhost:2121/user/list?userRole=teacher")
       .then((res) => {
         setPosts(res.data.results);
 
         console.log(res.data);
         // setTimeout(() => {
-        toast.success(`${res.data.total_count} users found!`);
+        toast.success(`${res.data.total_count} teachers found!`);
         // }, 4000);
       })
       .catch((err) => {
@@ -64,7 +63,7 @@ const ListAllUsers = () => {
                 </div>
               </a>
               <Link
-                to="./ListAllUsers"
+                to="./ListAllTeachers"
                 className="list-group-item list-group-item-action list-group-item-light p-3 dashboard-list"
               >
                 List Users
@@ -148,7 +147,7 @@ const ListAllUsers = () => {
                   style={{ margin: "0 20px" }}
                   className="listTherapist-title"
                 >
-                  Users List
+                  Teachers List
                 </h2>
                 <div className="container" style={{ backgroundColor: "#" }}>
                   <div className="row " style={{ backgroundColor: "" }}>
@@ -174,7 +173,7 @@ const ListAllUsers = () => {
 
                               <th>phone</th>
                               <th>email</th>
-                              <th>user role</th>
+
                               <th>change user role</th>
                             </tr>
                           </thead>
@@ -184,17 +183,14 @@ const ListAllUsers = () => {
                                 <td style={{ width: "15%" }}>{post.name}</td>
                                 <td style={{ width: "10%" }}>{post.phone}</td>
                                 <td style={{ width: "10%" }}>{post.email}</td>
-                                <td style={{ width: "10%" }}>
-                                  {post.userRole}
-                                </td>
 
                                 <td style={{ width: "30%" }}>
                                   <div>
                                     <button className="btn btn-primary">
-                                      change to teacher
+                                      change to student
                                     </button>
                                   </div>
-                                <hr/>
+                                  <hr />
                                   <div>
                                     <button className="btn btn-primary">
                                       change to hod
@@ -291,4 +287,4 @@ const ListAllUsers = () => {
   );
 };
 
-export default ListAllUsers;
+export default ListAllTeachers;

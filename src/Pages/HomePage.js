@@ -11,9 +11,13 @@ import "react-toastify/dist/ReactToastify.css";
 const HomePage = () => {
   return (
     <>
-      <div className="container homediv">
-        <h1> This is HomePage </h1>
-        <button className="btn btn-lg btn-primary">this is a button</button>
+      <div className="homePageParent">
+        <div className="container homeDiv">
+          <div className="jumbotron">
+            <h1> Welcome to Student Feedback System </h1>
+          </div>
+          {/* <button className="btn btn-lg btn-primary">this is a button</button> */}
+        </div>
       </div>
     </>
   );
