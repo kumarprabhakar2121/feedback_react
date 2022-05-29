@@ -1,14 +1,20 @@
 import React, { useState } from "react";
-// import ReactDOM from "react-dom";
-// import "../App.css";
 import "../index.css";
 import "../style/c.css";
 import "../style/signup.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// toast.configure();
-
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Link,
+  Redirect,
+  Navigate,
+} from "react-router-dom";
 const SignupAndLogin = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -19,7 +25,7 @@ const SignupAndLogin = () => {
   const [loginemail, setLoginemail] = useState("");
   const [userRole, setuserRole] = useState("");
   // const [department, setDepartment] = useState("");
-
+  let navigate = useNavigate();
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -81,6 +87,7 @@ const SignupAndLogin = () => {
         console.log(response);
         if (response.data.success) {
           toast.success("Login Successful");
+          navigate("/list-users");
         } else {
           toast.error(response.data.message);
         }

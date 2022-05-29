@@ -26,6 +26,13 @@ const HomePage = () => {
                 </button>
               </Link>
             </div>
+            <div className="dashboard-div">
+              <Link to="/login" className="">
+                <button className="btn btn-primary btn-lg">
+                  Login or Signup
+                </button>
+              </Link>
+            </div>
 
             {/* <li>
                 <Link

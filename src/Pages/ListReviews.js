@@ -24,7 +24,7 @@ const ListAllUsers = () => {
 
         console.log(res.data);
         // setTimeout(() => {
-        toast.success(`${res.data.total_count} review found!`);
+        toast.success(`${res.data.total_count} reviews found!`);
         // }, 4000);
       })
       .catch((err) => {

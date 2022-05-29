@@ -24,7 +24,7 @@ const ListAllTeachers = () => {
 
         console.log(res.data);
         // setTimeout(() => {
-        toast.success(`${res.data.total_count} users found!`);
+        toast.success(`${res.data.total_count} teacher found!`);
         // }, 4000);
       })
       .catch((err) => {

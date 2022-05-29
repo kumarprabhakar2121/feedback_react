@@ -23,7 +23,7 @@ const ListAllHod = () => {
 
         console.log(res.data);
         // setTimeout(() => {
-        toast.success(`${res.data.total_count} users found!`);
+        toast.success(`${res.data.total_count} hods found!`);
         // }, 4000);
       })
       .catch((err) => {
