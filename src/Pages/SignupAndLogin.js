@@ -17,6 +17,7 @@ const SignupAndLogin = () => {
   const [department, setDepartment] = useState("");
   const [loginpassword, setLoginPassword] = useState("");
   const [loginemail, setLoginemail] = useState("");
+  const [userRole, setuserRole] = useState("");
   // const [department, setDepartment] = useState("");
 
   const handleNameChange = (e) => {
@@ -40,16 +41,20 @@ const SignupAndLogin = () => {
   const handleLoginemailChange = (e) => {
     setLoginemail(e.target.value);
   };
+  const handleuserRoleChange = (e) => {
+    setuserRole(e.target.value);
+  };
   const handleSubmit = (e) => {
     axios({
       method: "post",
-      url: "http://localhost:2121/user/signup",
+      url: "https://sfs2121.herokuapp.com/user/signup",
       data: {
         name,
         email,
         password,
         phone,
         department,
+        userRole,
       },
     })
       .then(function (response) {
@@ -66,7 +71,7 @@ const SignupAndLogin = () => {
   const handleLoginSubmit = (e) => {
     axios({
       method: "post",
-      url: "http://localhost:2121/user/login",
+      url: "https://sfs2121.herokuapp.com/user/login",
       data: {
         email: loginemail,
         password: loginpassword,
@@ -241,7 +246,26 @@ const SignupAndLogin = () => {
                       <option value="CIVIL">CIVIL</option>
                     </select>
                   </div>
-
+                  <div className="group">
+                    <label for="userRole" className="label">
+                      userRole
+                    </label>
+                    <select
+                      className="form-select group form-select-lg"
+                      name="userRole"
+                      id="userRole"
+                      value={userRole}
+                      required
+                      onChange={(e) => {
+                        handleuserRoleChange(e);
+                      }}
+                    >
+                      <option> -select- </option>
+                      <option value="student"> Student </option>
+                      <option value="teacher"> Teacher </option>
+                      <option value="hod"> Hod </option>
+                    </select>
+                  </div>
                   <br></br>
                   <br></br>
                   <div className="group">

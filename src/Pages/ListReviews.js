@@ -18,13 +18,13 @@ const ListAllUsers = () => {
 
   useEffect(() => {
     axios
-      .get("https://sfs2121.herokuapp.com/user/list")
+      .get("https://sfs2121.herokuapp.com/review/list")
       .then((res) => {
         setPosts(res.data.results);
 
         console.log(res.data);
         // setTimeout(() => {
-        toast.success(`${res.data.total_count} users found!`);
+        toast.success(`${res.data.total_count} review found!`);
         // }, 4000);
       })
       .catch((err) => {
@@ -60,12 +60,12 @@ const ListAllUsers = () => {
                   href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
                   rel="stylesheet"
                 />
-                <div className="container">
+                <div className="container-fluid">
                   <h2
                     style={{ margin: "0 20px" }}
                     className="listTherapist-title"
                   >
-                    Users List
+                    Review List
                   </h2>
                   <div className="container" style={{ backgroundColor: "#" }}>
                     <div className="row " style={{ backgroundColor: "" }}>
@@ -85,71 +85,36 @@ const ListAllUsers = () => {
                                 <th>
                                   <span>
                                     {" "}
-                                    <strong>Name</strong>{" "}
+                                    <strong>Student Name</strong>{" "}
                                   </span>
                                 </th>
-
-                                <th>phone</th>
-                                <th>email</th>
-                                <th>user role</th>
-                                <th>change user role</th>
+                                <th>
+                                  <span>
+                                    {" "}
+                                    <strong>Teacher Name</strong>{" "}
+                                  </span>
+                                </th>
+                                <th>review_for_subject</th>
+                                <th>course_completion_review</th>
+                                <th>attitude_review</th>
+                                <th>teaching_technique_review</th>
                               </tr>
                             </thead>
                             <tbody>
                               {posts.map((post) => (
                                 <tr key={posts.id}>
-                                  <td style={{ width: "15%" }}>{post.name}</td>
-                                  <td style={{ width: "10%" }}>{post.phone}</td>
-                                  <td style={{ width: "10%" }}>{post.email}</td>
-                                  <td style={{ width: "10%" }}>
-                                    {post.userRole}
-                                  </td>
-
-                                  <td style={{ width: "30%" }}>
-                                    <div>
-                                      <button className="btn btn-primary">
-                                        change to teacher
-                                      </button>
-                                    </div>
-                                    <hr />
-                                    <div>
-                                      <button className="btn btn-primary">
-                                        change to hod
-                                      </button>
-                                    </div>
-                                  </td>
+                                  <td style={{ width: "15%" }}>{post.student_id.name}</td>
+                                  <td style={{ width: "10%" }}>{post.teacher_id.name}</td>
+                                  <td style={{ width: "10%" }}>{post.review_for_subject}</td>
+                                  <td style={{ width: "10%" }}>{post.course_completion_review}</td>
+                                  <td style={{ width: "10%" }}>{post.attitude_review}</td>
+                                  <td style={{ width: "10%" }}>{post.teaching_technique_review}</td>
                                 </tr>
                               ))}
                             </tbody>
                           </table>
                         </div>
-                        <ul className="pagination pull-right">
-                          <li>
-                            <a href="#">
-                              <i className="fa fa-chevron-left"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">1</a>
-                          </li>
-                          <li>
-                            <a href="#">2</a>
-                          </li>
-                          <li>
-                            <a href="#">3</a>
-                          </li>
-                          <li>
-                            <a href="#">4</a>
-                          </li>
-                          <li>
-                            <a href="#">5</a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fa fa-chevron-right"></i>
-                            </a>
-                          </li>
-                        </ul>
+
                       </div>
                     </div>
                   </div>

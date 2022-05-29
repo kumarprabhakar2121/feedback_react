@@ -8,7 +8,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter, Route, Routes, Link, Redirect } from "react-router-dom";
-import "../style/Student_Detail.css"
+import "../style/Student_Detail.css";
 
 // toast.configure();
 
@@ -17,7 +17,7 @@ const AddStudentDetails = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:2121/user/list?userRole=teacher")
+      .get("https://sfs2121.herokuapp.com/user/list?userRole=teacher")
       .then((res) => {
         setPosts(res.data.results);
 

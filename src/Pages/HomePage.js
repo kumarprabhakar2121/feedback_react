@@ -6,17 +6,61 @@ import "../style/HomePage.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// toast.configure();
-
+import { BrowserRouter, Route, Routes, Link, Redirect } from "react-router-dom";
+import ListReviews from "./ListReviews";
 const HomePage = () => {
   return (
     <>
       <div className="homePageParent">
         <div className="container homeDiv">
           <div className="jumbotron">
-            <h1> Welcome to Student Feedback System </h1>
+            <div className="dashboard-div">
+              <h1> Welcome to Student Feedback System </h1>
+            </div>
           </div>
-          {/* <button className="btn btn-lg btn-primary">this is a button</button> */}
+          <div className="col-md-8 mx-auto">
+            <div className="dashboard-div">
+              <Link to="/list-users" className="">
+                <button className="btn btn-primary btn-lg">
+                  Go To Dashboard
+                </button>
+              </Link>
+            </div>
+
+            {/* <li>
+                <Link
+                  to="/list-teachers"
+                  className="list-group-item list-group-item-action list-group-item-light p-3 dashboard-list"
+                >
+                  Teachers List
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/list-hod"
+                  className="list-group-item list-group-item-action list-group-item-light p-3 dashboard-list"
+                >
+                  Hod List
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/list-students"
+                  className="list-group-item list-group-item-action list-group-item-light p-3 dashboard-list"
+                >
+                  Students List
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/list-reviews"
+                  className="list-group-item list-group-item-action list-group-item-light p-3 dashboard-list"
+                >
+                  Reviews List
+                </Link>
+              </li> */}
+          </div>
         </div>
       </div>
     </>

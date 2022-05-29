@@ -7,18 +7,18 @@ import "../style/signup.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { BrowserRouter, Route, Routes, Link, Redirect } from "react-router-dom";
+// import { BrowserRouter, Route, Routes, Link, Redirect } from "react-router-dom";
 import AdminSideBar from "./AdminSideBar";
 
 // toast.configure();
 
-const ListAllUsers = () => {
+const ListAllStudents = () => {
   const [posts, setPosts] = useState([]);
   const [message, setMessage] = useState(false);
 
   useEffect(() => {
     axios
-      .get("https://sfs2121.herokuapp.com/user/list")
+      .get("https://sfs2121.herokuapp.com/user/list?userRole=student")
       .then((res) => {
         setPosts(res.data.results);
 
@@ -65,7 +65,7 @@ const ListAllUsers = () => {
                     style={{ margin: "0 20px" }}
                     className="listTherapist-title"
                   >
-                    Users List
+                    Students List
                   </h2>
                   <div className="container" style={{ backgroundColor: "#" }}>
                     <div className="row " style={{ backgroundColor: "" }}>
@@ -167,4 +167,4 @@ const ListAllUsers = () => {
   );
 };
 
-export default ListAllUsers;
+export default ListAllStudents;
