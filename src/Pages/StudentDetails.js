@@ -17,7 +17,7 @@ const AddStudentDetails = () => {
 
   useEffect(() => {
     axios
-      .get("https://sfs2121.herokuapp.com/user/list?userRole=teacher")
+      .get("http://localhost:2121/user/list?userRole=teacher")
       .then((res) => {
         setPosts(res.data.results);
 

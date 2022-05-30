@@ -61,6 +61,12 @@ const AdminSideBar = () => {
             >
               Review List
             </Link>
+            <Link
+              to="/add-review"
+              className="list-group-item list-group-item-action list-group-item-light p-3 dashboard-list"
+            >
+              Add Review
+            </Link>
           </div>
         </div>
       </div>

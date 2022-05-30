@@ -18,18 +18,18 @@ const ListAllUsers = () => {
   let count = 0;
   useEffect(() => {
     axios
-      .get("https://sfs2121.herokuapp.com/review/list")
+      .get("http://localhost:2121/review/list")
       .then((res) => {
-        if (res.results.length === 0) {
-          alert("no data available");
-        }
         setPosts(res.data.results);
-
+        
         console.log(res.data);
         count++;
         count == 1
-          ? toast.success(`${res.data.total_count} reviews found!`)
-          : console.log(res.data);
+        ? toast.success(`${res.data.total_count} reviews found!`)
+        : console.log(res.data);
+        if (res.results.length === 0) {
+          alert("no data available");
+        }
       })
       .catch((err) => {
         console.log(err);

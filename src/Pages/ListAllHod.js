@@ -17,17 +17,16 @@ const ListAllHod = () => {
   let count = 0;
   useEffect(() => {
     axios
-      .get("https://sfs2121.herokuapp.com/user/list?userRole=hod")
+      .get("http://localhost:2121/user/list?userRole=hod")
       .then((res) => {
-        if (res.results.length === 0) {
-          
-          alert("no data available");
-        }
         setPosts(res.data.results);
         count++;
         count == 1
           ? toast.success(`${res.data.total_count} hods found!`)
           : console.log(res.data);
+        if (res.results.length === 0) {
+          alert("no data available");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -109,13 +108,13 @@ const ListAllHod = () => {
 
                                   <td style={{ width: "30%" }}>
                                     <div>
-                                      <button className="btn btn-primary">
+                                      <button className="btn btn-warning">
                                         change to teacher
                                       </button>
                                     </div>
                                     <hr />
                                     <div>
-                                      <button className="btn btn-primary">
+                                      <button className="btn btn-warning">
                                         change to hod
                                       </button>
                                     </div>
@@ -125,7 +124,6 @@ const ListAllHod = () => {
                             </tbody>
                           </table>
                         </div>
-                        
                       </div>
                     </div>
                   </div>

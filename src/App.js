@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes, Link, Redirect } from "react-router-dom";
 import ListAllUsers from "./Pages/ListAllUsers";
 import ListAllTeachers from "./Pages/ListAllTeachers";
 import AddStudentDetails from "./Pages/StudentDetails";
-// import AddReview from "./Pages/AddReview";
+import AddReview from "./Pages/AddReview";
 import ListAllHod from "./Pages/ListAllHod";
 import ListReviews from "./Pages/ListReviews";
 
@@ -29,7 +29,7 @@ function App() {
           path="/add-student-details"
           element={<AddStudentDetails />}
         />
-        {/* <Route exact path="/add-review" element={<AddReview />} /> */}
+        <Route exact path="/add-review" element={<AddReview />} />
       </Routes>
     </BrowserRouter>
   );

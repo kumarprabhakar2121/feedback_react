@@ -18,12 +18,8 @@ const ListAllTeachers = () => {
   let count = 0;
   useEffect(() => {
     axios
-      .get("https://sfs2121.herokuapp.com/user/list?userRole=teacher")
+      .get("http://localhost:2121/user/list?userRole=teacher")
       .then((res) => {
-
-        if (res.results.length === 0) {
-          alert("no data available");
-        }
         setPosts(res.data.results);
 
         console.log(res.data);
@@ -31,6 +27,9 @@ const ListAllTeachers = () => {
         count == 1
           ? toast.success(`${res.data.total_count} hods found!`)
           : console.log(res.data);
+        if (res.results.length === 0) {
+          alert("no data available");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -112,13 +111,13 @@ const ListAllTeachers = () => {
 
                                   <td style={{ width: "30%" }}>
                                     <div>
-                                      <button className="btn btn-primary">
+                                      <button className="btn btn-warning">
                                         change to teacher
                                       </button>
                                     </div>
                                     <hr />
                                     <div>
-                                      <button className="btn btn-primary">
+                                      <button className="btn btn-warning">
                                         change to hod
                                       </button>
                                     </div>

@@ -53,7 +53,7 @@ const SignupAndLogin = () => {
   const handleSubmit = (e) => {
     axios({
       method: "post",
-      url: "https://sfs2121.herokuapp.com/user/signup",
+      url: "http://localhost:2121/user/signup",
       data: {
         name,
         email,
@@ -77,7 +77,7 @@ const SignupAndLogin = () => {
   const handleLoginSubmit = (e) => {
     axios({
       method: "post",
-      url: "https://sfs2121.herokuapp.com/user/login",
+      url: "http://localhost:2121/user/login",
       data: {
         email: loginemail,
         password: loginpassword,
