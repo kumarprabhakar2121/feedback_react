@@ -15,17 +15,21 @@ import AdminSideBar from "./AdminSideBar";
 const ListAllUsers = () => {
   const [posts, setPosts] = useState([]);
   const [message, setMessage] = useState(false);
-
+  let count = 0;
   useEffect(() => {
     axios
       .get("https://sfs2121.herokuapp.com/user/list")
       .then((res) => {
+        if (res.results.length === 0) {
+          alert("no data available");
+        }
         setPosts(res.data.results);
 
         console.log(res.data);
-        // setTimeout(() => {
-        toast.success(`${res.data.total_count} users found!`);
-        // }, 4000);
+        count++;
+        count == 1
+          ? toast.success(`${res.data.total_count} users found!`)
+          : console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -123,33 +127,6 @@ const ListAllUsers = () => {
                             </tbody>
                           </table>
                         </div>
-                        <ul className="pagination pull-right">
-                          <li>
-                            <a href="#">
-                              <i className="fa fa-chevron-left"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">1</a>
-                          </li>
-                          <li>
-                            <a href="#">2</a>
-                          </li>
-                          <li>
-                            <a href="#">3</a>
-                          </li>
-                          <li>
-                            <a href="#">4</a>
-                          </li>
-                          <li>
-                            <a href="#">5</a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fa fa-chevron-right"></i>
-                            </a>
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>

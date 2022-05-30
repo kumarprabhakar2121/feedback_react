@@ -15,17 +15,21 @@ import AdminSideBar from "./AdminSideBar";
 const ListAllUsers = () => {
   const [posts, setPosts] = useState([]);
   const [message, setMessage] = useState(false);
-
+  let count = 0;
   useEffect(() => {
     axios
       .get("https://sfs2121.herokuapp.com/review/list")
       .then((res) => {
+        if (res.results.length === 0) {
+          alert("no data available");
+        }
         setPosts(res.data.results);
 
         console.log(res.data);
-        // setTimeout(() => {
-        toast.success(`${res.data.total_count} reviews found!`);
-        // }, 4000);
+        count++;
+        count == 1
+          ? toast.success(`${res.data.total_count} reviews found!`)
+          : console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -103,18 +107,29 @@ const ListAllUsers = () => {
                             <tbody>
                               {posts.map((post) => (
                                 <tr key={posts.id}>
-                                  <td style={{ width: "15%" }}>{post.student_id.name}</td>
-                                  <td style={{ width: "10%" }}>{post.teacher_id.name}</td>
-                                  <td style={{ width: "10%" }}>{post.review_for_subject}</td>
-                                  <td style={{ width: "10%" }}>{post.course_completion_review}</td>
-                                  <td style={{ width: "10%" }}>{post.attitude_review}</td>
-                                  <td style={{ width: "10%" }}>{post.teaching_technique_review}</td>
+                                  <td style={{ width: "15%" }}>
+                                    {post.student_id.name}
+                                  </td>
+                                  <td style={{ width: "10%" }}>
+                                    {post.teacher_id.name}
+                                  </td>
+                                  <td style={{ width: "10%" }}>
+                                    {post.review_for_subject}
+                                  </td>
+                                  <td style={{ width: "10%" }}>
+                                    {post.course_completion_review}
+                                  </td>
+                                  <td style={{ width: "10%" }}>
+                                    {post.attitude_review}
+                                  </td>
+                                  <td style={{ width: "10%" }}>
+                                    {post.teaching_technique_review}
+                                  </td>
                                 </tr>
                               ))}
                             </tbody>
                           </table>
                         </div>
-
                       </div>
                     </div>
                   </div>
